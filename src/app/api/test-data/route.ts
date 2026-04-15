@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import type Stripe from 'stripe';
 import { getStripe } from '@/lib/stripe';
 
 const FROZEN_TIME = 1772283600;
@@ -13,7 +14,7 @@ const sharedCustomerParams = {
   payment_method: PAYMENT_METHOD,
   invoice_settings: {
     default_payment_method: PAYMENT_METHOD,
-    rendering_options: { amount_tax_display: 'include_inclusive_tax' as const },
+    rendering_options: { amount_tax_display: 'include_inclusive_tax' },
     custom_fields: [{ name: 'AU', value: 'Tax Invoice' }],
   },
   address: {
@@ -23,7 +24,10 @@ const sharedCustomerParams = {
     postal_code: '3000',
     state: 'VIC',
   },
-} as const;
+} satisfies Omit<
+  Stripe.CustomerCreateParams,
+  'test_clock' | 'name' | 'description' | 'metadata'
+>;
 
 /**
  * POST /api/test-data — Load PriceIncrease test data: 2 test clocks, 6 customers, 6 subscriptions.

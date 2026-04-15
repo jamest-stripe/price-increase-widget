@@ -16,5 +16,5 @@ function getSecretKey(): string {
 
 /** Returns a Stripe instance using the active secret key (override or .env). */
 export function getStripe(): Stripe {
-  return new Stripe(getSecretKey(), { apiVersion: '2026-01-28.clover' });
+  return new Stripe(getSecretKey(), { apiVersion: '2023-10-16' });
 }
