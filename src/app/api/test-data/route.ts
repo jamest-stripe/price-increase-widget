@@ -3,8 +3,8 @@ import type Stripe from "stripe";
 import { getStripe } from "@/lib/stripe";
 
 const FROZEN_TIME = 1772283600;
-const PRICE_SINGLE = "price_1RsuiFCrprPxA8Dyof40RtHP";
-const PRICE_BUNDLE_EXTRA = "price_1TMcSQCrprPxA8Dyn0wQbe9m";
+const PRICE_SINGLE = "price_1T0YAUQ8CnbogUZdCbVXO0Qr";
+const PRICE_BUNDLE_EXTRA = "price_1SYFufQ8CnbogUZdEOJmLJoK";
 const PAYMENT_METHOD = "pm_card_au";
 
 const sharedCustomerParams = {
