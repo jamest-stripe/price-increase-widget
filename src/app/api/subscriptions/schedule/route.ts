@@ -104,7 +104,6 @@ export async function POST(request: NextRequest) {
           items: Array<{ price: string; quantity: number }>;
           start_date: number;
           end_date?: number;
-          duration?: { interval: 'day' | 'week' | 'month' | 'year'; interval_count: number };
           metadata?: Record<string, string>;
         };
         const phases: PhaseParam[] = [
@@ -129,7 +128,6 @@ export async function POST(request: NextRequest) {
           {
             items: phaseItems,
             start_date: effectiveTimestamp,
-            duration: { interval: recurring.interval as 'day' | 'week' | 'month' | 'year', interval_count: recurring.interval_count ?? 1 },
             metadata: { price_increase_date: new Date().toISOString().slice(0, 10) },
           },
         ];
